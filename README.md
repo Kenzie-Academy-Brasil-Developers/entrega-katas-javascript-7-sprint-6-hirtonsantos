@@ -54,7 +54,7 @@ function myCallback(value) {
 
 let myArr = ["maçã", "uva", "pera"];
 
-let retornoMap = myArr.map(myCallback);
+// let retornoMap = myArr.map(myCallback);
 let retornoNewMap = newMap(myArr, myCallback);
 
 retornoMap // Deve retornar ["maçã é muito bom!", "uva é muito bom!", "pera é muito bom!"];
