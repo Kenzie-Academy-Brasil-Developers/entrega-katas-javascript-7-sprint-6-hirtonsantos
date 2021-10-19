@@ -1,27 +1,30 @@
-// A função reducer recebe quatro parâmetros:
+// newJoin
 
-// Acumulador (acc)
-// Valor Atual (cur)
-// Index Atual (idx)
-// Array original (src)
+// 12. METODO JOIN()
 
-const array1 = [1, 2, 3, 4, 5];
-let resul = 0
+// O método join() junta todos os elementos de um array 
+// (ou um array-like object) em uma string e retorna esta string.
 
-function reduce(acumulador, valorAtual, index, array) {
-    resul = acumulador + valorAtual
-    if (index === array.length-1){
-        console.log(acumulador)
+// arr.join([separador = ','])
+
+const elements = ['Fire', 'Air', 'Water'];
+
+function join(separador) {
+    let string = ""
+    for (let index = 0; index < elements.length; index++) {
+        string+=elements[index]
+        if (index !== elements.length-1){
+        string+=separador
+        }
     }
+    console.log(string)
 }
 
-function newFindIndex(array, callback,valorinicial) {
-    if (valorinicial !== undefined){
-        resul+=valorinicial
+function newJoin(separador) {
+    if (separador === undefined){
+        separador = ","
     }
-    for (let i = 0; i < array.length; i++) {
-        callback(resul, array[i], i, array)
-    }
+    join(separador)
 }
 
-let retornonewFindIndex = newFindIndex(array1, reduce, 5)
+let retornonewJoin = newJoin()
