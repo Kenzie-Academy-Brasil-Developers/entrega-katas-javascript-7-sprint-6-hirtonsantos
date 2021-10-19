@@ -1,30 +1,19 @@
-// newJoin
+// USADO PARA TESTAR FUNÇÕES
 
-// 12. METODO JOIN()
+// let arrayIndexOf = [1,2,3]
 
-// O método join() junta todos os elementos de um array 
-// (ou um array-like object) em uma string e retorna esta string.
+// function searchElement(element, indexElement) {
+//     let resul = -1
+//     for (let index = indexElement; index < arrayIndexOf.length; index++) {
+//         if (arrayIndexOf[index] === element) {
+//             resul = index
+//         }
+//     }
+//     console.log(resul)
+// }
 
-// arr.join([separador = ','])
+// function newIndexOf(element, indexElement) {
+//     searchElement(element, indexElement)
+// }
 
-const elements = ['Fire', 'Air', 'Water'];
-
-function join(separador) {
-    let string = ""
-    for (let index = 0; index < elements.length; index++) {
-        string+=elements[index]
-        if (index !== elements.length-1){
-        string+=separador
-        }
-    }
-    console.log(string)
-}
-
-function newJoin(separador) {
-    if (separador === undefined){
-        separador = ","
-    }
-    join(separador)
-}
-
-let retornonewJoin = newJoin()
+// let retornonewIndexOf = newIndexOf(1,1)

@@ -1,4 +1,4 @@
-// // 1. METODO FOREACH() 
+// // // // 1. METODO FOREACH() 
 
 let newArray = ["number", "street", "string", "bom dia"]
 
@@ -12,10 +12,10 @@ function newForEach (array, callback){
     }
 }
 
-// let retornonewForEach = newForEach(newArray, somar)
+let retornonewForEach = newForEach(newArray, somar)
 
 
-// // 2. METODO MAP() 
+// // // // 2. METODO MAP() 
 
 let myArr = ["maçã", "uva", "pera"];
 let myCallback = []
@@ -23,34 +23,35 @@ function newMap (array,callback){
     for (let i = 0; i < myArr.length; i++) {
         myCallback.push(myArr[i] + " é muito bom!")
     }
-    return myCallback
+    console.log (myCallback)
 }
 
 let retornoNewMap = newMap(myArr, myCallback)
 
 
-// // 3. METODO FILTER()
+// // // // 3. METODO FILTER()
 
-let newArray = [1, 2, 3, 4]
-
+let ArrayFilter = [1, 2, 3, 4]
+let newArrayFilter = [] 
 function isBigEnough(item) {
     if (item > 2){
-        console.log (item)
+        newArrayFilter.push(item)
     }
-  }
+}
 
 function newFilter (array, callback){
     for (let i = 0; i < array.length; i++) {
         callback (array[i])
     }
+    console.log(newArrayFilter)
 }
 
-let retornonewFilter = newFilter(newArray, isBigEnough)
+let retornonewFilter = newFilter(ArrayFilter, isBigEnough)
 
-// // 3. METODO FIND()
+// // // // 4. METODO FIND()
 
-// O método find() retorna o valor do primeiro elemento do array que 
-// satisfizer a função de teste provida. Caso contrario, undefined é retornado.
+// // // O método find() retorna o valor do primeiro elemento do array que 
+// // // satisfizer a função de teste provida. Caso contrario, undefined é retornado.
 
 let array = [2, 1, 4, 4, 5, 10]
 
@@ -74,11 +75,11 @@ function newFind(array,callback) {
 let retornonewnewFind = newFind(array, found)
 
 
-// // 4. METODO FINDINDEX()
+// // // // 5. METODO FINDINDEX()
 
-// O método findIndex() retorna o índice no array do primeiro elemento que 
-// satisfizer a função de teste provida. Caso contrário, retorna -1, 
-// indicando que nenhum elemento passou no teste.
+// // // O método findIndex() retorna o índice no array do primeiro elemento que 
+// // // satisfizer a função de teste provida. Caso contrário, retorna -1, 
+// // // indicando que nenhum elemento passou no teste.
 
 const ages = [3, 10, 18, 20];
 
@@ -103,7 +104,7 @@ let retornonewFindIndex = newFindIndex(ages, foundIndex)
 
 
 
-// // 6. METODO REDUCE()
+// // // // 6. METODO REDUCE()
 
 const array1 = [1, 2, 3, 4, 5];
 let resul = 0
@@ -127,9 +128,9 @@ function newReduce(array, callback,valorinicial) {
 let retornonewReduce = newReduce(array1, reduce, 5)
 
 
-// 7. METODO SOME()
+// // // 7. METODO SOME()
 
-let newArray = [2, 5, 8, 1, 4, 10, 12]
+let newArraySome = [2, 5, 8, 1, 4, 10, 12]
 
 function isBiggerThan10(array) {
     let resul
@@ -147,12 +148,12 @@ function isBiggerThan10(array) {
 function newSome(array, callback) {
     callback(array)
 }
-let retornonewSome = newSome(newArray, isBiggerThan10)
+let retornonewSome = newSome(newArraySome, isBiggerThan10)
 
 
-// 8. METODO NEWEVERY()
+// // // 8. METODO NEWEVERY()
 
-let newArray = [2, 5, 8, 1, 4, 10, 10]
+let newArrayEvery = [2, 5, 8, 1, 4, 10, 10]
 
 function isBiggerThan11(array) {
     let resul = false
@@ -164,20 +165,20 @@ function isBiggerThan11(array) {
     console.log (resul)
 }
 
-function newSome(array, callback) {
+function newEvery(array, callback) {
     callback(array)
 }
 
-let retornonewSome = newSome(newArray, isBiggerThan11)
+let retornnewEvery = newEvery(newArrayEvery, isBiggerThan11)
 
 
-// 9. METODO FILL()
+// // // 9. METODO FILL()
 
-let array = [1, 2, 3]
+let arrayFill = [1, 2, 3]
 
 function changes (value, start, end){
     for (let index = start; index < end; index++) {
-        array[index] = value
+        arrayFill[index] = value
     }
     console.log(array)
 }
@@ -188,14 +189,14 @@ function newFill (value, start, end){
 
 let retornonewFill = newFill(100, 1, 3)
 
-// 10. METODO INCLUDES()
+// // // 10. METODO INCLUDES()
 
-let array = [1,2,3]
+let arrayIncludes = [1,2,3]
 
-function searchElement(element, indexElement) {
+function IncludesElement(element, indexElement) {
     let resul = false
-    for (let index = indexElement; index < array.length; index++) {
-        if (array[index] === element) {
+    for (let index = indexElement; index < arrayIncludes.length; index++) {
+        if (arrayIncludes[index] === element) {
             resul = true
         }
     }
@@ -203,34 +204,32 @@ function searchElement(element, indexElement) {
 }
 
 function newIncludes(element, indexElement) {
-    searchElement(element, indexElement)
+    IncludesElement(element, indexElement)
 }
 
 let retornonewIncludes = newIncludes(3,3)
 
 
-// 11. METODO INDEXOF()
-
-let array = [1,2,3]
-
+// // // // 11. METODO INDEXOF()
+let resultado = -1
 function searchElement(element, indexElement) {
-    let resul = -1
-    for (let index = indexElement; index < array.length; index++) {
-        if (array[index] === element) {
-            resul = index
+    let arrayIndexOf = [1,2,3]
+    for (let index = indexElement; index < arrayIndexOf.length; index++) {
+        if (arrayIndexOf[index] === element) {
+            resultado = index
         }
     }
-    console.log(resul)
 }
 
 function newIndexOf(element, indexElement) {
     searchElement(element, indexElement)
+    console.log(resultado)
 }
 
 let retornonewIndexOf = newIndexOf(1,1)
 
 
-// 12. METODO CONCAT()
+// // // 12. METODO CONCAT()
 
 let alpha = ["a", "b", "c"];
 let numeric = [1, 2, 3];
@@ -253,12 +252,12 @@ function newConcat (){
 let retornonewConcat = newConcat(alpha, numeric, string, alphaNumeric)
 
 
-// 12. METODO JOIN()
+// // // 13. METODO JOIN()
 
-// O método join() junta todos os elementos de um array 
-// (ou um array-like object) em uma string e retorna esta string.
+// // // O método join() junta todos os elementos de um array 
+// // // (ou um array-like object) em uma string e retorna esta string.
 
-// arr.join([separador = ','])
+// // // arr.join([separador = ','])
 
 const elements = ['Fire', 'Air', 'Water'];
 
