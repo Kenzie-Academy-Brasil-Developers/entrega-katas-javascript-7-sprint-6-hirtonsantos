@@ -18,15 +18,16 @@ let retornonewForEach = newForEach(newArray, somar)
 // // // // 2. METODO MAP() 
 
 let myArr = ["maçã", "uva", "pera"];
+let time = ["Juventus", "Palermo", "Everton"]
 let myCallback = []
 function newMap (array,callback){
-    for (let i = 0; i < myArr.length; i++) {
-        myCallback.push(myArr[i] + " é muito bom!")
+    for (let i = 0; i < array.length; i++) {
+        callback.push(array[i] + " é muito bom!")
     }
-    console.log (myCallback)
+    console.log (callback)
 }
 
-let retornoNewMap = newMap(myArr, myCallback)
+let retornoNewMap = newMap(["Jantar", "Malhar", "Dormir"], myCallback)
 
 
 // // // // 3. METODO FILTER()
