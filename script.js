@@ -17,22 +17,25 @@ let retornonewForEach = newForEach(newArray, somar)
 
 // // // // 2. METODO MAP() 
 
-let myArr = ["maçã", "uva", "pera"];
 let time = ["Juventus", "Palermo", "Everton"]
-let myCallback = []
-function newMap (array,callback){
-    for (let i = 0; i < array.length; i++) {
-        callback.push(array[i] + " é muito bom!")
-    }
-    console.log (callback)
+
+function completeString (string) {
+    return string + " é muito bom!"
 }
 
-let retornoNewMap = newMap(["Jantar", "Malhar", "Dormir"], myCallback)
+function newMap (array,callback){
+    let myArr = []
+    for (let i = 0; i < array.length; i++) {
+        let resul = callback(array[i])
+        myArr.push(resul)
+    }
+    console.log (myArr)
+}
 
+let retornoNewMap = newMap(["Jantar", "Malhar", "Dormir"], completeString)
 
 // // // // 3. METODO FILTER()
 
-let ArrayFilter = [1, 2, 3, 4]
 let newArrayFilter = [] 
 function isBigEnough(item) {
     if (item > 2){
@@ -42,37 +45,36 @@ function isBigEnough(item) {
 
 function newFilter (array, callback){
     for (let i = 0; i < array.length; i++) {
-        callback (array[i])
+        callback(array[i], i, array)
     }
     console.log(newArrayFilter)
 }
 
-let retornonewFilter = newFilter(ArrayFilter, isBigEnough)
+let retornonewFilter = newFilter([5,6], isBigEnough)
 
 // // // // 4. METODO FIND()
 
 // // // O método find() retorna o valor do primeiro elemento do array que 
 // // // satisfizer a função de teste provida. Caso contrario, undefined é retornado.
 
-let array = [2, 1, 4, 4, 5, 10]
+let array = [2, 1, 10, 4, 5, 5]
 
-function found(array) {
-    let resul
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > 5) {
-            resul = array[i]
-            break;
-        } else {
-            resul = undefined
+function found(element) {  
+    if (element > 5) {
+            return element
         }
-    }
-    return resul
 }
 
 function newFind(array,callback) {
-        console.log(callback(array))
+    let resul
+    for (let i = 0; i < array.length; i++) {
+        resul = callback(array[i], i, array)
+        if (resul > 5){
+            break;
+        }
+    }
+    console.log(resul)
 }
-
 let retornonewnewFind = newFind(array, found)
 
 
@@ -82,25 +84,26 @@ let retornonewnewFind = newFind(array, found)
 // // // satisfizer a função de teste provida. Caso contrário, retorna -1, 
 // // // indicando que nenhum elemento passou no teste.
 
-const ages = [3, 10, 18, 20];
+const ages = [5, 99, 19, 20];
 
-function foundIndex(array) {
-    let resul
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > 18) {
-            resul = i
-            break;
+function foundIndex(array, i) {
+        if (array > 18) {
+            return i
         } else {
-            resul = -1
+            return -1
         }
-    }
-    return resul
 }
 
 function newFindIndex(array,callback) {
-        console.log(callback(array))
+    let resul
+    for (let i = 0; i < array.length; i++) {
+        resul = callback(array[i], i, array)
+        if (array[i] > 18){
+            break;
+        }
+    }
+    console.log(resul)
 }
-
 let retornonewFindIndex = newFindIndex(ages, foundIndex)
 
 
@@ -131,46 +134,53 @@ let retornonewReduce = newReduce(array1, reduce, 5)
 
 // // // 7. METODO SOME()
 
-let newArraySome = [2, 5, 8, 1, 4, 10, 12]
+let newArraySome = [2, 5, 8, 1, 4, 10, 11]
 
 function isBiggerThan10(array) {
-    let resul
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > 10) {
-            resul = true
-            break;
-        } else {
-            resul = false
-        }
+    if (array > 10) {
+        return true
+    } else {
+        return false
     }
-    console.log (resul)
 }
 
 function newSome(array, callback) {
-    callback(array)
+    let resul 
+    for (let i = 0; i < array.length; i++) {
+        resul = callback(array[i])
+        if (resul === true){
+            break;
+        }
+    }
+    console.log(resul)
 }
 let retornonewSome = newSome(newArraySome, isBiggerThan10)
-
 
 // // // 8. METODO NEWEVERY()
 
 let newArrayEvery = [2, 5, 8, 1, 4, 10, 10]
 
 function isBiggerThan11(array) {
-    let resul = false
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > 11) {
-            resul = true
+        if (array > 11) {
+            return true
+        } else {
+            return false
         }
-    }
-    console.log (resul)
 }
 
 function newEvery(array, callback) {
-    callback(array)
+    let resul
+    for (let i = 0; i < array.length; i++) {
+        resul = callback(array[i],i,array)
+        if (resul === true) {
+            break;
+        }
+    }
+    console.log(resul)
 }
 
-let retornnewEvery = newEvery(newArrayEvery, isBiggerThan11)
+let retornnewEvery = newEvery([1,2,3,15], isBiggerThan11)
+
 
 
 // // // 9. METODO FILL()
@@ -194,7 +204,7 @@ let retornonewFill = newFill(100, 1, 3)
 
 let arrayIncludes = [1,2,3]
 
-function IncludesElement(element, indexElement) {
+function newIncludes(element, indexElement) {
     let resul = false
     for (let index = indexElement; index < arrayIncludes.length; index++) {
         if (arrayIncludes[index] === element) {
@@ -204,53 +214,44 @@ function IncludesElement(element, indexElement) {
     console.log(resul)
 }
 
-function newIncludes(element, indexElement) {
-    IncludesElement(element, indexElement)
-}
-
-let retornonewIncludes = newIncludes(3,3)
+let retornonewIncludes = newIncludes(3,2)
 
 
 // // // // 11. METODO INDEXOF()
-let resultado = -1
-function searchElement(element, indexElement) {
-    let arrayIndexOf = [1,2,3]
-    for (let index = indexElement; index < arrayIndexOf.length; index++) {
-        if (arrayIndexOf[index] === element) {
+
+function newIndexOf(array, element, indexElement) {
+    let resultado = -1
+    for (let index = indexElement; index < array.length; index++) {
+        if (array[index] === element) {
             resultado = index
         }
     }
-}
-
-function newIndexOf(element, indexElement) {
-    searchElement(element, indexElement)
     console.log(resultado)
 }
 
-let retornonewIndexOf = newIndexOf(1,1)
-
+let retornonewIndexOf = newIndexOf([2, 5, 9], 5, 1)
 
 // // // 12. METODO CONCAT()
 
 let alpha = ["a", "b", "c"];
 let numeric = [1, 2, 3];
 let string = ["bom dia", "familia", "kenzinha"]
-let alphaNumeric = []
 
-function concat (valorAtual,arrayfinal){
-    for (let index = 0; index < valorAtual.length; index++) {
-        arrayfinal.push(valorAtual[index])
+function concat (arrayatual,arrayfinal){
+    for (let index = 0; index < arrayatual.length; index++) {
+        arrayfinal.push(arrayatual[index])
     }
 }
 
-function newConcat (){
-    for (let index = 0; index < arguments.length-1; index++) {
-        concat(arguments[index],arguments[arguments.length-1])
+function newConcat (...arrays){
+    let alphaNumeric = []
+    for (let i = 0; i < arrays.length; i++) {
+        concat(arrays[i],alphaNumeric)
     }
-    console.log(arguments[arguments.length-1])
+    console.log(alphaNumeric)
 }
 
-let retornonewConcat = newConcat(alpha, numeric, string, alphaNumeric)
+let retornonewConcat = newConcat(alpha, numeric, string)
 
 
 // // // 13. METODO JOIN()
